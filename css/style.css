@@ -20,7 +20,10 @@ body {
   color: var(--text);
   min-height: 100vh;
   line-height: 1.55;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><circle cx="10" cy="10" r="3.5" fill="none" stroke="%23ff3b30" stroke-width="2"/><path d="M10 0 v5 M10 15 v5 M0 10 h5 M15 10 h5" stroke="%23ff3b30" stroke-width="2"/></svg>') 10 10, crosshair;
 }
+
+a, button, code, .btn, .menubar a { cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><rect x="4" y="4" width="12" height="12" fill="%23ffb020" stroke="%23000000" stroke-width="1"/></svg>') 10 10, pointer; }
 
 .scanlines {
   position: fixed;
@@ -133,6 +136,27 @@ main { position: relative; z-index: 1; max-width: 920px; margin: 0 auto; padding
 .feature-list { list-style: none; margin: 0 0 14px; padding-left: 4px; }
 .feature-list li { font-size: 13.5px; padding: 5px 0; color: #c7c7c7; }
 .feature-list code { color: var(--amber); }
+
+.sample-run {
+  font-size: 12.5px;
+  line-height: 1.75;
+  color: var(--green);
+  background: var(--panel);
+  border: 1px solid var(--panel-edge);
+  border-left: 3px solid var(--green);
+  padding: 18px 22px;
+  overflow-x: auto;
+  margin-top: 16px;
+}
+
+.preset-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.preset-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.preset-table td { padding: 7px 10px; border-bottom: 1px solid var(--panel-edge); }
+.preset-table code { color: var(--amber); }
+.preset-table .dim { color: var(--muted); }
+
+.dl-row { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
+.btn-big { padding: 15px 26px; font-size: 14px; }
 
 .code-block {
   font-size: 13px;

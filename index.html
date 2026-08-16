@@ -6,7 +6,7 @@
   <meta name="description" content="SlowFuck Pro — a terminal network operations tool. Scan your LAN, label every device, probe ports, and run the lag engine. A Neptune Productions project.">
   <meta name="theme-color" content="#0a0a0a">
   <title>SLOWFUCK PRO — network operations</title>
-  <link rel="icon" type="image/png" href="windowq.png">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -22,7 +22,9 @@
       <a href="#ops">THE TOOL</a>
       <a href="#panels">THE PANELS</a>
       <a href="#lag">THE LAG ENGINE</a>
+      <a href="#presets">PRESETS</a>
       <a href="#run">RUN IT</a>
+      <a href="#download">DOWNLOAD</a>
     </nav>
   </header>
 
@@ -107,6 +109,44 @@
         </ul>
         <p class="dim">It refuses to lag the gateway or yourself. It has standards.</p>
       </div>
+      <pre class="sample-run">$ sudo python3 slowfuckpro.py
+[+] SlowFuck Pro initialized
+[+] Interface: wlan0
+[+] Gateway: 192.168.1.1
+[+] My IP: 192.168.1.5
+[+] Found 8 devices
+[*] Scanning 192.168.1.23 (Xiaomi IoT)...
+[+] Scan complete: 2 open ports | OS: Android 11
+[+] Open ports: 80, 8080
+[*] Starting lag on 192.168.1.23 (Xiaomi IoT) — delay 2000ms + 500ms jitter
+[+] LAG ACTIVE</pre>
+    </section>
+
+    <section class="section" id="presets">
+      <h2 class="section-title">▸ THE PRESETS</h2>
+      <p class="section-sub">Delay and jitter, dialled in from the number row.</p>
+      <div class="preset-grid">
+        <article class="card">
+          <h3>DELAY — KEYS 1–5</h3>
+          <table class="preset-table">
+            <tr><td><code>1</code></td><td>500ms</td><td class="dim">polite</td></tr>
+            <tr><td><code>2</code></td><td>1000ms</td><td class="dim">noticeable</td></tr>
+            <tr><td><code>3</code></td><td>2000ms</td><td class="dim">default</td></tr>
+            <tr><td><code>4</code></td><td>3000ms</td><td class="dim">heavy</td></tr>
+            <tr><td><code>5</code></td><td>5000ms</td><td class="dim">brutal</td></tr>
+          </table>
+        </article>
+        <article class="card">
+          <h3>JITTER — KEYS 6–0</h3>
+          <table class="preset-table">
+            <tr><td><code>6</code></td><td>100ms</td><td class="dim">smooth</td></tr>
+            <tr><td><code>7</code></td><td>300ms</td><td class="dim">stutter</td></tr>
+            <tr><td><code>8</code></td><td>500ms</td><td class="dim">default</td></tr>
+            <tr><td><code>9</code></td><td>800ms</td><td class="dim">rough</td></tr>
+            <tr><td><code>0</code></td><td>1000ms</td><td class="dim">chaotic</td></tr>
+          </table>
+        </article>
+      </div>
     </section>
 
     <section class="section" id="run">
@@ -118,6 +158,16 @@ sudo apt install arp-scan arpspoof nmap netcat-openbsd
 # go
 sudo python3 slowfuckpro.py</pre>
       <p class="note">Controls: <code>↑ ↓</code> navigate · <code>ENTER</code> apply lag · <code>SPACE</code> stop · <code>s</code> scan · <code>r</code> refresh · <code>h</code> help · <code>q</code> quit.</p>
+    </section>
+
+    <section class="section" id="download">
+      <h2 class="section-title">▸ DOWNLOAD</h2>
+      <p class="section-sub">You have to run it — from a terminal, as root. Grab the source and bring it up.</p>
+      <div class="dl-row">
+        <a class="btn btn-primary btn-big" href="https://github.com/notmicrosoft2000-cmd/slowfuck-pro/archive/refs/heads/main.zip" target="_blank" rel="noopener">[ DOWNLOAD THE SOURCE (ZIP) ]</a>
+        <a class="btn btn-ghost btn-big" href="https://github.com/notmicrosoft2000-cmd/slowfuck-pro" target="_blank" rel="noopener">[ THE REPOSITORY ]</a>
+      </div>
+      <p class="note dim">Unzip, then: <code>sudo apt install arp-scan arpspoof nmap netcat-openbsd</code> → <code>sudo python3 slowfuckpro.py</code></p>
     </section>
 
     <section class="section" id="source">
@@ -134,5 +184,7 @@ sudo python3 slowfuckpro.py</pre>
     <p class="dim">USE IT ON YOUR OWN NETWORK. THE WIRE REMEMBERS.</p>
   </footer>
 
+  <script>window.SFX_CONFIG = { hover: { f: 1900, d: 0.018, t: "square", v: 0.01 }, click: { f: 520, d: 0.06, t: "square", v: 0.03 } };</script>
+  <script src="js/sfx.js"></script>
 </body>
 </html>
