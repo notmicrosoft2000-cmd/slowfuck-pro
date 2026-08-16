@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SlowFuck Pro — a terminal network operations tool. Scan your LAN, label every device, probe ports, and run the lag engine. A Neptune Productions project.">
+  <meta name="theme-color" content="#0a0a0a">
+  <title>SLOWFUCK PRO — network operations</title>
+  <link rel="icon" type="image/png" href="windowq.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">SLOWFUCK <span class="red">PRO</span> <span class="dim">— NETWORK OPERATIONS</span></div>
+    <nav class="menubar" aria-label="Site navigation">
+      <a href="#ops">THE TOOL</a>
+      <a href="#panels">THE PANELS</a>
+      <a href="#lag">THE LAG ENGINE</a>
+      <a href="#run">RUN IT</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <pre class="banner" aria-hidden="true">
+  ███████╗██╗      ██████╗ ██╗    ██╗███████╗██╗   ██╗██╗  ██╗
+  ██╔════╝██║     ██╔═══██╗██║    ██║██╔════╝██║   ██║██║ ██╔╝
+  ███████╗██║     ██║   ██║██║ █╗ ██║█████╗  ██║   ██║█████╔╝
+  ╚════██║██║     ██║   ██║██║███╗██║██╔══╝  ██║   ██║██╔═██╗
+  ███████║███████╗╚██████╔╝╚███╔███╔╝██║     ╚██████╔╝██║  ██╗
+  ╚══════╝╚══════╝ ╚═════╝  ╚══╝╚══╝ ╚═╝      ╚═════╝  ╚═╝  ╚═╝</pre>
+      <p class="sub">ZETA NETWORK CONTROL INTERFACE · v1</p>
+      <p class="tagline">Know every device on your network. Then, if you must, make one of them regret it.</p>
+      <p class="intro">A full-screen terminal tool that maps your local network — vendors, pings, open ports, operating systems — and carries a lag engine for the devices that need a little humility.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#run">[ RUN IT ]</a>
+        <a class="btn btn-ghost" href="#lag">[ THE LAG ENGINE ]</a>
+      </div>
+      <p class="foot-note">REQUIRES ROOT · FOR YOUR OWN NETWORK · WITH GREAT PING COMES GREAT DELAY</p>
+    </section>
+
+    <section class="section" id="ops">
+      <h2 class="section-title">▸ THE TOOL</h2>
+      <p class="section-sub">One terminal, one screen, the whole neighbourhood.</p>
+      <div class="grid">
+        <article class="card">
+          <h3>DEVICE SCAN</h3>
+          <p>ARP-scan the local network and label every find — the router, your phone, that TV that never updates.</p>
+        </article>
+        <article class="card">
+          <h3>LIVE PINGS</h3>
+          <p>Every device is pinged on a loop, colour-coded by latency. Green, amber, red — you can see them sweat.</p>
+        </article>
+        <article class="card">
+          <h3>PORT PROBE</h3>
+          <p>Selected device? It scans 18 common ports and guesses what it's running. And it guesses the OS too.</p>
+        </article>
+        <article class="card">
+          <h3>DEVICE INFO PANEL</h3>
+          <p>IP, MAC, vendor, label, ports, OS — the full dossier, one keypress at a time.</p>
+        </article>
+        <article class="card">
+          <h3>OPERATIONS LOG</h3>
+          <p>Every scan, every lag applied, every port found — timestamped and scrolling, the way it should be.</p>
+        </article>
+        <article class="card">
+          <h3>IT'S A TUI</h3>
+          <p>Real curses, real colours, real keyboard. No mouse. The terminal is the interface.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="panels">
+      <h2 class="section-title">▸ THE PANELS</h2>
+      <p class="section-sub">Four regions, one screen.</p>
+      <div class="panel-map">
+        <pre>┌ DEVICES ──────────────┬ DEVICE INFO ─────────────┐
+│ IP        Label   Ping │ IP / MAC / VENDOR / OS    │
+│ 192.168.1.1 ROUTER 2ms │                          │
+│ 192.168.1.5 YOUR 11ms  │  LAG CONTROLS             │
+│ 192.168.1.9 TV    87ms │  delay 2000ms  [1-5]      │
+│ 192.168.1.23 XIAOMI 24ms│  jitter 500ms  [6-0]     │
+└────────────────────────┴──────────────────────────┘
+ LOG
+ [+] SlowFuck Pro initialized
+ [+] Gateway: 192.168.1.1   [+] My IP: 192.168.1.5
+ ↑↓ NAVIGATE · ENTER LAG · SPACE STOP · s SCAN · r REFRESH · q QUIT</pre>
+      </div>
+    </section>
+
+    <section class="section" id="lag">
+      <h2 class="section-title">▸ THE LAG ENGINE</h2>
+      <p class="section-sub">ARP spoof + traffic shaping. The polite version of turning someone's internet off.</p>
+      <div class="lag-box">
+        <p>Select a target, pick a delay, press enter. The engine reroutes their traffic through you and adds <span class="red">delay + jitter</span> to everything they do. Press <code>SPACE</code> and they're restored, none the wiser.</p>
+        <ul class="feature-list">
+          <li>▸ Delay presets — <code>500ms</code> to <code>5000ms (brutal)</code></li>
+          <li>▸ Jitter presets — <code>100ms</code> to <code>1000ms (chaotic)</code></li>
+          <li>▸ Applies netem delay on the wire, not the app</li>
+          <li>▸ Full cleanup on stop — forwarding off, shaping removed, spoof killed</li>
+        </ul>
+        <p class="dim">It refuses to lag the gateway or yourself. It has standards.</p>
+      </div>
+    </section>
+
+    <section class="section" id="run">
+      <h2 class="section-title">▸ RUN IT</h2>
+      <p class="section-sub">Needs root and a few command-line companions.</p>
+      <pre class="code-block"># requirements
+sudo apt install arp-scan arpspoof nmap netcat-openbsd
+
+# go
+sudo python3 slowfuckpro.py</pre>
+      <p class="note">Controls: <code>↑ ↓</code> navigate · <code>ENTER</code> apply lag · <code>SPACE</code> stop · <code>s</code> scan · <code>r</code> refresh · <code>h</code> help · <code>q</code> quit.</p>
+    </section>
+
+    <section class="section" id="source">
+      <h2 class="section-title">▸ THE SOURCE</h2>
+      <p class="section-sub">Open and honest about exactly what it does.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://github.com/notmicrosoft2000-cmd/slowfuck-pro" target="_blank" rel="noopener">[ THE REPOSITORY ]</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>NEPTUNE PRODUCTIONS [C] — SLOWFUCK PRO</p>
+    <p class="dim">USE IT ON YOUR OWN NETWORK. THE WIRE REMEMBERS.</p>
+  </footer>
+
+</body>
+</html>
