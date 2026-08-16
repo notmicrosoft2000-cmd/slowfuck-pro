@@ -40,6 +40,24 @@
       <p class="sub">ZETA NETWORK CONTROL INTERFACE · v1</p>
       <p class="tagline">Know every device on your network. Then, if you must, make one of them regret it.</p>
       <p class="intro">A full-screen terminal tool that maps your local network — vendors, pings, open ports, operating systems — and carries a lag engine for the devices that need a little humility.</p>
+
+      <div class="tui" id="tui" aria-hidden="true">
+        <div class="tui-head">SLOWFUCK PRO — ZETA NETWORK CONTROL INTERFACE <span class="tui-led"></span></div>
+        <div class="tui-body">
+          <div class="tui-left">
+            <div class="tui-table">
+              <div class="tui-row tui-head"><span class="c-ip">IP</span><span class="c-label">LABEL</span><span class="c-ping">PING</span></div>
+              <div id="tuiDevices"></div>
+            </div>
+          </div>
+          <div class="tui-right">
+            <div class="tui-log" id="tuiLog"></div>
+            <div class="tui-lag">LAG <span id="tuiLag">0ms</span><span class="caret">▌</span></div>
+          </div>
+        </div>
+        <div class="tui-foot">↑↓ NAVIGATE · ENTER LAG · SPACE STOP · s SCAN · r REFRESH · q QUIT</div>
+      </div>
+
       <div class="hero-actions">
         <a class="btn btn-primary" href="#run">[ RUN IT ]</a>
         <a class="btn btn-ghost" href="#lag">[ THE LAG ENGINE ]</a>
@@ -47,38 +65,38 @@
       <p class="foot-note">REQUIRES ROOT · FOR YOUR OWN NETWORK · WITH GREAT PING COMES GREAT DELAY</p>
     </section>
 
-    <section class="section" id="ops">
+    <section class="section reveal" id="ops">
       <h2 class="section-title">▸ THE TOOL</h2>
       <p class="section-sub">One terminal, one screen, the whole neighbourhood.</p>
       <div class="grid">
-        <article class="card">
+        <article class="card reveal">
           <h3>DEVICE SCAN</h3>
           <p>ARP-scan the local network and label every find — the router, your phone, that TV that never updates.</p>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <h3>LIVE PINGS</h3>
           <p>Every device is pinged on a loop, colour-coded by latency. Green, amber, red — you can see them sweat.</p>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <h3>PORT PROBE</h3>
           <p>Selected device? It scans 18 common ports and guesses what it's running. And it guesses the OS too.</p>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <h3>DEVICE INFO PANEL</h3>
           <p>IP, MAC, vendor, label, ports, OS — the full dossier, one keypress at a time.</p>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <h3>OPERATIONS LOG</h3>
           <p>Every scan, every lag applied, every port found — timestamped and scrolling, the way it should be.</p>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <h3>IT'S A TUI</h3>
           <p>Real curses, real colours, real keyboard. No mouse. The terminal is the interface.</p>
         </article>
       </div>
     </section>
 
-    <section class="section" id="panels">
+    <section class="section reveal" id="panels">
       <h2 class="section-title">▸ THE PANELS</h2>
       <p class="section-sub">Four regions, one screen.</p>
       <div class="panel-map">
@@ -96,7 +114,7 @@
       </div>
     </section>
 
-    <section class="section" id="lag">
+    <section class="section reveal" id="lag">
       <h2 class="section-title">▸ THE LAG ENGINE</h2>
       <p class="section-sub">ARP spoof + traffic shaping. The polite version of turning someone's internet off.</p>
       <div class="lag-box">
@@ -108,6 +126,11 @@
           <li>▸ Full cleanup on stop — forwarding off, shaping removed, spoof killed</li>
         </ul>
         <p class="dim">It refuses to lag the gateway or yourself. It has standards.</p>
+      </div>
+      <div class="lag-gauge" id="lagGauge">
+        <div class="gauge-title">CURRENT TARGET: <span id="gaugeTarget">XIAOMI IOT</span></div>
+        <div class="gauge-track"><div class="gauge-fill" id="gaugeFill"></div><div class="gauge-dot" id="gaugeDot"></div></div>
+        <div class="gauge-readout"><span id="gaugeDelay">2000</span> ms delay · <span id="gaugeJitter">500</span> ms jitter <span class="dim">· live simulation</span></div>
       </div>
       <pre class="sample-run">$ sudo python3 slowfuckpro.py
 [+] SlowFuck Pro initialized
@@ -122,11 +145,11 @@
 [+] LAG ACTIVE</pre>
     </section>
 
-    <section class="section" id="presets">
+    <section class="section reveal" id="presets">
       <h2 class="section-title">▸ THE PRESETS</h2>
       <p class="section-sub">Delay and jitter, dialled in from the number row.</p>
       <div class="preset-grid">
-        <article class="card">
+        <article class="card reveal">
           <h3>DELAY — KEYS 1–5</h3>
           <table class="preset-table">
             <tr><td><code>1</code></td><td>500ms</td><td class="dim">polite</td></tr>
@@ -136,7 +159,7 @@
             <tr><td><code>5</code></td><td>5000ms</td><td class="dim">brutal</td></tr>
           </table>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <h3>JITTER — KEYS 6–0</h3>
           <table class="preset-table">
             <tr><td><code>6</code></td><td>100ms</td><td class="dim">smooth</td></tr>
@@ -149,7 +172,7 @@
       </div>
     </section>
 
-    <section class="section" id="run">
+    <section class="section reveal" id="run">
       <h2 class="section-title">▸ RUN IT</h2>
       <p class="section-sub">Needs root and a few command-line companions.</p>
       <pre class="code-block"># requirements
@@ -160,7 +183,7 @@ sudo python3 slowfuckpro.py</pre>
       <p class="note">Controls: <code>↑ ↓</code> navigate · <code>ENTER</code> apply lag · <code>SPACE</code> stop · <code>s</code> scan · <code>r</code> refresh · <code>h</code> help · <code>q</code> quit.</p>
     </section>
 
-    <section class="section" id="download">
+    <section class="section reveal" id="download">
       <h2 class="section-title">▸ DOWNLOAD</h2>
       <p class="section-sub">You have to run it — from a terminal, as root. Grab the source and bring it up.</p>
       <div class="dl-row">
@@ -170,7 +193,7 @@ sudo python3 slowfuckpro.py</pre>
       <p class="note dim">Unzip, then: <code>sudo apt install arp-scan arpspoof nmap netcat-openbsd</code> → <code>sudo python3 slowfuckpro.py</code></p>
     </section>
 
-    <section class="section" id="source">
+    <section class="section reveal" id="source">
       <h2 class="section-title">▸ THE SOURCE</h2>
       <p class="section-sub">Open and honest about exactly what it does.</p>
       <div class="actions">
@@ -186,5 +209,6 @@ sudo python3 slowfuckpro.py</pre>
 
   <script>window.SFX_CONFIG = { hover: { f: 1900, d: 0.018, t: "square", v: 0.01 }, click: { f: 520, d: 0.06, t: "square", v: 0.03 } };</script>
   <script src="js/sfx.js"></script>
+  <script src="js/console.js"></script>
 </body>
 </html>
